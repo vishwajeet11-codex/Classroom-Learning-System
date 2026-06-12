@@ -1,22 +1,32 @@
-# Classroom-Learning-system
-A full stack web application for managing classroom activities built by Vishwajeet Vibhute and Harshal Galati.
+# Classroom Learning System
 
-Tech Stack
- 1 Node.js
- 2 Express.js
- 3 MongoDB
- 4 JavaScript
- 5 HTML/CSS
+A full stack web application for managing classroom activities.
+Built by Vishwajeet Vibhute and Harshal Galati.
 
-  Features
-  my project is based on basic classroom tasks.it has separate login for student and teacher and dashboard also .teacher can create and upload assignments and tests and also able to upload chapter notes for students .they can also create a class timetable for overall week and lecturewise ,generate the reports of student and one of the best frature is both student and teacher can chat in chat section . on the other side student can access all study material and also view all schedule academic calender and also able to reply messages .
-  
- How to Run
+## Tech Stack
+- Node.js
+- Express.js
+- MongoDB
+- JavaScript
+- HTML / CSS
+
+## Features
+- Separate login for Student and Teacher
+- Teacher can create and upload Assignments
+- Teacher can create Tests with MCQ questions
+- Teacher can upload Study Notes for students
+- Class Timetable management for full week
+- Student Reports generation with marks and attendance
+- Academic Calendar for scheduling events
+- Real time Chat section for students and teachers
+- Students can access all study material and notes
+
+## How to Run
 1. Clone the repo
 2. Run npm install
 3. Run node server.js
-4. Open localhost:3000
+4. Open localhost:3000 in browser
 
-Developer
-- Your Name — https://github.com/vishwajeet11-codex
-- Harshal Galati —    https://github.com/Harshal-Galati
+## Developers
+- Vishwajeet Vibhute — https://github.com/vishwajeet11-codex
+- Harshal Galati — https://github.com/Harshal-Galati
