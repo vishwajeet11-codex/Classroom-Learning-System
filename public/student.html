@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - E-Learning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <h2>Clasroom Learning</h2>
+            <a href="#" class="nav-link active" onclick="showSection('dashboardSection', this)">My Assignments</a>
+            <a href="#" class="nav-link" onclick="showSection('testsSection', this)">Tests</a>
+            <a href="#" class="nav-link" onclick="showSection('scheduleSection', this)">Schedule</a>
+            <a href="#" class="nav-link" onclick="showSection('notesSection', this)">Notes</a>
+            <a href="#" class="nav-link" onclick="showSection('reportsSection', this)">Reports</a>
+            <a href="#" class="nav-link" onclick="showSection('calendarSection', this)">Calendar</a>
+            <a href="#" class="nav-link" onclick="showSection('chatSection', this)">Chat</a>
+            <a href="#" class="nav-link logout" onclick="logout()">Logout</a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <div id="dashboardSection" class="content-section active">
+                <header class="header">
+                    <h1>Student Dashboard</h1>
+                    <span id="userDisplay" style="color: var(--accent-color);"></span>
+                </header>
+
+                <div id="studentAssignmentsList" class="card-grid fade-in">
+                    <!-- Assignments will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Tests Section -->
+            <div id="testsSection" class="content-section">
+                <header class="header">
+                    <h1>Available Tests</h1>
+                </header>
+                <div id="studentTestsList" class="card-grid fade-in"></div>
+            </div>
+
+            <!-- Schedule Section -->
+            <div id="scheduleSection" class="content-section">
+                <header class="header">
+                    <h1>Class Schedule</h1>
+                </header>
+                <div class="timetable-card fade-in">
+                    <div class="timetable-scroll">
+                        <table class="timetable-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                    <th>Saturday</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentTimetableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="fade-in" style="display: none;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Time Slot</th>
+                                <th>Subject</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentScheduleBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div id="notesSection" class="content-section">
+                <header class="header">
+                    <h1>Study Notes</h1>
+                </header>
+                <div id="studentNotesList" class="card-grid fade-in"></div>
+            </div>
+
+            <!-- Reports Section -->
+            <div id="reportsSection" class="content-section">
+                <header class="header">
+                    <h1>My Performance Reports</h1>
+                </header>
+                <div class="fade-in">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Marks</th>
+                                <th>Attendance (%)</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentReportsBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Calendar Section -->
+            <div id="calendarSection" class="content-section">
+                <header class="header">
+                    <h1>Academic Calendar</h1>
+                </header>
+                <div id="studentCalendarGrid" class="calendar-grid fade-in"></div>
+            </div>
+
+            <!-- Chat Section -->
+            <div id="chatSection" class="content-section">
+                <header class="header" style="margin-bottom: 10px;">
+                    <h1>Student Discussion Board</h1>
+                </header>
+                <div class="chat-container fade-in">
+                    <div id="chatMessages" class="chat-messages"></div>
+                    <form id="chatForm" class="chat-input">
+                        <input type="text" id="chatInput" placeholder="Type a message..." required>
+                        <button type="submit" style="width: auto; padding: 0 20px;">Send</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Submit Assignment Modal -->
+    <div id="submitAssignmentModal" class="modal">
+        <div class="modal-content fade-in">
+            <span class="close-btn" onclick="closeModal('submitAssignmentModal')">&times;</span>
+            <h2>Submit Assignment</h2>
+            <form id="submitAssignmentForm">
+                <input type="hidden" id="submitAssignmentId">
+                <div class="form-group">
+                    <label for="submissionContent">Your Work</label>
+                    <textarea id="submissionContent" rows="6" placeholder="Type your answer here..."
+                        required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="submissionFile">Attachment (Optional)</label>
+                    <input type="file" id="submissionFile">
+                </div>
+                <button type="submit">Submit Work</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Attempt Test Modal -->
+    <div id="attemptTestModal" class="modal">
+        <div class="modal-content fade-in" style="max-width: 800px; max-height: 90vh; overflow-y: auto;">
+            <span class="close-btn" onclick="closeModal('attemptTestModal')">&times;</span>
+            <h2 id="attemptTestTitle">Attempt Test</h2>
+            <div id="testTimerDisplay" style="color: var(--text-color); font-weight: bold; margin-bottom: 15px;"></div>
+            <form id="attemptTestForm">
+                <input type="hidden" id="attemptTestId">
+                <div id="testQuestionsContainer"></div>
+                <button type="submit" style="margin-top: 20px;">Submit Test</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

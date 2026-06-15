@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - E-Learning</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+    <div class="auth-container fade-in">
+        <h1 id="formTitle">Login</h1>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p style="margin-top: 1rem; color: var(--text-muted);">
+                Don't have an account? <a href="#" onclick="toggleAuth('register')"
+                    style="color: var(--accent-color);">Register</a>
+            </p>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" style="display: none;">
+            <div class="form-group">
+                <label for="regUsername">Username</label>
+                <input type="text" id="regUsername" placeholder="Choose username" required>
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" placeholder="Choose password" required>
+            </div>
+            <div class="form-group">
+                <label for="regRole">I am a...</label>
+                <select id="regRole">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+            </div>
+            <button type="submit">Register</button>
+            <p style="margin-top: 1rem; color: var(--text-muted);">
+                Already have an account? <a href="#" onclick="toggleAuth('login')"
+                    style="color: var(--accent-color);">Login</a>
+            </p>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
